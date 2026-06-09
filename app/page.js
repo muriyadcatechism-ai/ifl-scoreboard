@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -15,55 +16,99 @@ export default function Home() {
   }, []);
 
   if (!data) {
-    return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+    return (
+      <div style={{ textAlign: "center", padding: "50px" }}>
+        <h2>Loading...</h2>
+      </div>
+    );
   }
 
   return (
     <main
       style={{
         minHeight: "100vh",
-        background: "#f3f4f6",
+        background: "linear-gradient(135deg, #e8f1ff, #f5f7ff)",
         padding: "20px",
-        fontFamily: "Arial",
+        fontFamily: "Arial, sans-serif",
       }}
     >
-      <div style={{ maxWidth: "1000px", margin: "auto" }}>
+      <div
+        style={{
+          maxWidth: "1000px",
+          margin: "auto",
+        }}
+      >
+        {/* Header */}
         <div
           style={{
-            background: "white",
-            padding: "20px",
-            borderRadius: "10px",
+            background: "#ffffff",
+            padding: "25px",
+            borderRadius: "20px",
             textAlign: "center",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
             marginBottom: "20px",
           }}
         >
-          <h2>MURIYAD CATECHISM UNIT</h2>
-          <h1>IFL FAITH CLUB SCORE BOARD</h1>
+          <Image
+            src="/logo.JPG"
+            alt="Catechism Logo"
+            width={120}
+            height={120}
+            priority
+          />
+
+          <h1
+            style={{
+              color: "#0f2f6b",
+              marginTop: "15px",
+              marginBottom: "5px",
+            }}
+          >
+            MURIYAD CATECHISM UNIT
+          </h1>
+
+          <h2
+            style={{
+              color: "#b91c1c",
+              marginTop: "0",
+            }}
+          >
+            IFL FAITH CLUB SCORE BOARD
+          </h2>
         </div>
 
+        {/* Current Task */}
         <div
           style={{
-            background: "white",
+            background: "#ffffff",
             padding: "20px",
-            borderRadius: "10px",
+            borderRadius: "15px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
             marginBottom: "20px",
           }}
         >
-          <h2>Current Task</h2>
+          <h2>📌 Current Task</h2>
           <p>{data.currentTask}</p>
         </div>
 
+        {/* Leaderboard */}
         <div
           style={{
-            background: "white",
+            background: "#ffffff",
             padding: "20px",
-            borderRadius: "10px",
+            borderRadius: "15px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
             marginBottom: "20px",
           }}
         >
-          <h2>Leaderboard</h2>
+          <h2>🏆 Leaderboard</h2>
 
-          <table width="100%" border="1" cellPadding="10">
+          <table
+            width="100%"
+            border="1"
+            cellPadding="10"
+            style={{ borderCollapse: "collapse" }}
+          >
             <thead>
               <tr>
                 <th>Rank</th>
@@ -75,7 +120,15 @@ export default function Home() {
             <tbody>
               {data.leaderboard.map((club, index) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
+                  <td>
+                    {index === 0
+                      ? "🥇"
+                      : index === 1
+                      ? "🥈"
+                      : index === 2
+                      ? "🥉"
+                      : index + 1}
+                  </td>
                   <td>{club.club}</td>
                   <td>{club.score}</td>
                 </tr>
@@ -84,16 +137,23 @@ export default function Home() {
           </table>
         </div>
 
+        {/* History */}
         <div
           style={{
-            background: "white",
+            background: "#ffffff",
             padding: "20px",
-            borderRadius: "10px",
+            borderRadius: "15px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
           }}
         >
-          <h2>Task History</h2>
+          <h2>📜 Task History</h2>
 
-          <table width="100%" border="1" cellPadding="10">
+          <table
+            width="100%"
+            border="1"
+            cellPadding="10"
+            style={{ borderCollapse: "collapse" }}
+          >
             <thead>
               <tr>
                 <th>Date</th>
@@ -107,12 +167,12 @@ export default function Home() {
               {data.history.map((item, index) => (
                 <tr key={index}>
                   <td>
-  {new Date(item[0]).toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  })}
-</td>
+                    {new Date(item[0]).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </td>
                   <td>{item[1]}</td>
                   <td>{item[2]}</td>
                   <td>{item[3]}</td>
