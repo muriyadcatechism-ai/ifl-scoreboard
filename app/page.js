@@ -16,12 +16,59 @@ export default function Home() {
   }, []);
 
   if (!data) {
-    return (
-      <div style={{ textAlign: "center", padding: "50px" }}>
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(135deg, #e8f1ff, #f5f7ff)",
+        textAlign: "center",
+        padding: "20px",
+      }}
+    >
+      <Image
+        src="/logo.png"
+        alt="Catechism Logo"
+        width={120}
+        height={120}
+        priority
+      />
+
+      <h2
+        style={{
+          fontFamily: "Georgia, serif",
+          color: "#2d3192",
+          marginTop: "20px",
+        }}
+      >
+        "Be merciful, just as your Father is merciful."
+      </h2>
+
+      <p
+        style={{
+          color: "#666",
+          fontSize: "18px",
+          marginTop: "10px",
+        }}
+      >
+        Luke 6:36
+      </p>
+
+      <p
+        style={{
+          color: "#c4a13b",
+          fontWeight: "bold",
+          marginTop: "20px",
+        }}
+      >
+        Loading Faith Club Score Board...
+      </p>
+    </div>
+  );
+}
 
   return (
     <main
