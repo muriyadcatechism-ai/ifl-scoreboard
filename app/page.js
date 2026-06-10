@@ -168,6 +168,15 @@ if (!data) {
           >
             FAITH • HOPE • LOVE
           </p>
+<p
+  style={{
+    marginTop: "10px",
+    color: "#666",
+    fontSize: "14px",
+  }}
+>
+  🔄 Last Updated: {new Date().toLocaleString("en-GB")}
+</p>
         </div>
 
         {/* CURRENT TASK */}
