@@ -15,7 +15,7 @@ export const metadata = {
   title: "MURIYAD CATECHISM IFL SCOREBOARD",
   description: "IFL Faith Club Scoreboard",
   icons: {
-    icon: "/icon.JPG",
+    icon: "/icon.jpg",
   },
 };
 
