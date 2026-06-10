@@ -34,34 +34,42 @@ export default function Home() {
     >
       <div
         style={{
-          maxWidth: "1000px",
+          maxWidth: "1100px",
           margin: "auto",
         }}
       >
-        {/* Header */}
+        {/* HEADER */}
         <div
           style={{
             background: "#ffffff",
-            padding: "25px",
-            borderRadius: "20px",
+            padding: "35px",
+            borderRadius: "25px",
             textAlign: "center",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-            marginBottom: "20px",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            marginBottom: "25px",
+            borderTop: "6px solid #2d3192",
           }}
         >
           <Image
             src="/logo.png"
             alt="Catechism Logo"
-            width={120}
-            height={120}
+            width={180}
+            height={180}
             priority
+            style={{
+              margin: "0 auto",
+              display: "block",
+            }}
           />
 
           <h1
             style={{
-              color: "#0f2f6b",
-              marginTop: "15px",
-              marginBottom: "5px",
+              fontFamily: "Georgia, serif",
+              fontSize: "48px",
+              color: "#2d3192",
+              marginTop: "20px",
+              marginBottom: "10px",
+              fontWeight: "bold",
             }}
           >
             MURIYAD CATECHISM UNIT
@@ -69,48 +77,116 @@ export default function Home() {
 
           <h2
             style={{
-              color: "#b91c1c",
+              fontFamily: "Georgia, serif",
+              fontSize: "32px",
+              color: "#c4a13b",
               marginTop: "0",
+              marginBottom: "10px",
+              fontWeight: "bold",
             }}
           >
             IFL FAITH CLUB SCORE BOARD
           </h2>
+
+          <p
+            style={{
+              color: "#666",
+              fontSize: "18px",
+              letterSpacing: "2px",
+              marginTop: "10px",
+            }}
+          >
+            FAITH • HOPE • LOVE
+          </p>
         </div>
 
-        {/* Current Task */}
+        {/* CURRENT TASK */}
         <div
           style={{
             background: "#ffffff",
-            padding: "20px",
-            borderRadius: "15px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-            marginBottom: "20px",
+            padding: "25px",
+            borderRadius: "20px",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            marginBottom: "25px",
+            borderTop: "6px solid #c4a13b",
+            textAlign: "center",
           }}
         >
-          <h2>📌 Current Task</h2>
-          <p>{data.currentTask}</p>
+          <h2
+            style={{
+              color: "#2d3192",
+              fontFamily: "Georgia, serif",
+              fontSize: "30px",
+              marginBottom: "15px",
+            }}
+          >
+            CURRENT TASK
+          </h2>
+
+          <hr
+            style={{
+              width: "120px",
+              border: "2px solid #c4a13b",
+              marginBottom: "20px",
+            }}
+          />
+
+          <p
+            style={{
+              fontSize: "20px",
+              fontWeight: "bold",
+            }}
+          >
+            {data.currentTask}
+          </p>
         </div>
 
-        {/* Leaderboard */}
+        {/* LEADERBOARD */}
         <div
           style={{
             background: "#ffffff",
-            padding: "20px",
-            borderRadius: "15px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-            marginBottom: "20px",
+            padding: "25px",
+            borderRadius: "20px",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            marginBottom: "25px",
+            borderTop: "6px solid #2d3192",
           }}
         >
-          <h2>🏆 Leaderboard</h2>
+          <h2
+            style={{
+              color: "#2d3192",
+              fontFamily: "Georgia, serif",
+              fontSize: "30px",
+              textAlign: "center",
+              marginBottom: "15px",
+            }}
+          >
+            LEADERBOARD
+          </h2>
+
+          <hr
+            style={{
+              width: "120px",
+              border: "2px solid #c4a13b",
+              marginBottom: "20px",
+            }}
+          />
 
           <table
             width="100%"
-            border="1"
-            cellPadding="10"
-            style={{ borderCollapse: "collapse" }}
+            cellPadding="12"
+            style={{
+              borderCollapse: "collapse",
+              textAlign: "center",
+            }}
           >
             <thead>
-              <tr>
+              <tr
+                style={{
+                  background: "#2d3192",
+                  color: "white",
+                }}
+              >
                 <th>Rank</th>
                 <th>Faith Club</th>
                 <th>Points</th>
@@ -119,43 +195,85 @@ export default function Home() {
 
             <tbody>
               {data.leaderboard.map((club, index) => (
-                <tr key={index}>
-                  <td>
+                <tr
+                  key={index}
+                  style={{
+                    background:
+                      index === 0
+                        ? "#fff8dc"
+                        : index % 2 === 0
+                        ? "#f8f9ff"
+                        : "#ffffff",
+                  }}
+                >
+                  <td style={{ padding: "12px" }}>
                     {index === 0
                       ? "🥇"
                       : index === 1
                       ? "🥈"
                       : index === 2
                       ? "🥉"
-                      : index + 1}
+                      : "🔹"}
                   </td>
-                  <td>{club.club}</td>
-                  <td>{club.score}</td>
+
+                  <td style={{ padding: "12px", fontWeight: "600" }}>
+                    {club.club}
+                  </td>
+
+                  <td style={{ padding: "12px", fontWeight: "bold" }}>
+                    {club.score}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        {/* History */}
+        {/* TASK HISTORY */}
         <div
           style={{
             background: "#ffffff",
-            padding: "20px",
-            borderRadius: "15px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+            padding: "25px",
+            borderRadius: "20px",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+            borderTop: "6px solid #2d3192",
           }}
         >
-          <h2>📜 Task History</h2>
+          <h2
+            style={{
+              color: "#2d3192",
+              fontFamily: "Georgia, serif",
+              fontSize: "30px",
+              textAlign: "center",
+              marginBottom: "15px",
+            }}
+          >
+            TASK HISTORY
+          </h2>
+
+          <hr
+            style={{
+              width: "120px",
+              border: "2px solid #c4a13b",
+              marginBottom: "20px",
+            }}
+          />
 
           <table
             width="100%"
-            border="1"
-            cellPadding="10"
-            style={{ borderCollapse: "collapse" }}
+            cellPadding="12"
+            style={{
+              borderCollapse: "collapse",
+              textAlign: "center",
+            }}
           >
             <thead>
-              <tr>
+              <tr
+                style={{
+                  background: "#2d3192",
+                  color: "white",
+                }}
+              >
                 <th>Date</th>
                 <th>Faith Club</th>
                 <th>Task</th>
@@ -165,7 +283,13 @@ export default function Home() {
 
             <tbody>
               {data.history.map((item, index) => (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  style={{
+                    background:
+                      index % 2 === 0 ? "#f8f9ff" : "#ffffff",
+                  }}
+                >
                   <td>
                     {new Date(item[0]).toLocaleDateString("en-GB", {
                       day: "2-digit",
@@ -173,6 +297,7 @@ export default function Home() {
                       year: "numeric",
                     })}
                   </td>
+
                   <td>{item[1]}</td>
                   <td>{item[2]}</td>
                   <td>{item[3]}</td>
@@ -180,6 +305,36 @@ export default function Home() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* FOOTER */}
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "35px",
+            color: "#555",
+          }}
+        >
+          <p
+            style={{
+              fontWeight: "bold",
+              marginBottom: "5px",
+            }}
+          >
+            ST. JOSEPH'S CHURCH CATECHISM UNIT
+          </p>
+
+          <p>Muriyad</p>
+
+          <p
+            style={{
+              color: "#c4a13b",
+              letterSpacing: "2px",
+              fontWeight: "bold",
+            }}
+          >
+            FAITH • HOPE • LOVE
+          </p>
         </div>
       </div>
     </main>
