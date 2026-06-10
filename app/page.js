@@ -294,12 +294,14 @@ export default function Home() {
                   }}
                 >
                   <td>
-                    {new Date(item[0]).toLocaleDateString("en-GB", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </td>
+  {isNaN(Date.parse(item[0]))
+    ? item[0]
+    : new Date(item[0]).toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })}
+</td>
 
                   <td>{item[1]}</td>
                   <td>{item[2]}</td>
