@@ -50,7 +50,7 @@ export default function Home() {
           }}
         >
           <Image
-            src="/logo.JPG"
+            src="/logo.jpg"
             alt="Catechism Logo"
             width={120}
             height={120}
