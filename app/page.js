@@ -124,12 +124,13 @@ export default function Home() {
           </h2>
 
           <hr
-            style={{
-              width: "120px",
-              border: "2px solid #c4a13b",
-              marginBottom: "20px",
-            }}
-          />
+  style={{
+    width: "80%",
+    border: "none",
+    borderTop: "3px solid #c4a13b",
+    margin: "20px auto",
+  }}
+/>
 
           <p
             style={{
@@ -165,12 +166,13 @@ export default function Home() {
           </h2>
 
           <hr
-            style={{
-              width: "120px",
-              border: "2px solid #c4a13b",
-              marginBottom: "20px",
-            }}
-          />
+  style={{
+    width: "80%",
+    border: "none",
+    borderTop: "3px solid #c4a13b",
+    margin: "20px auto",
+  }}
+/>
 
           <table
             width="100%"
@@ -252,12 +254,13 @@ export default function Home() {
           </h2>
 
           <hr
-            style={{
-              width: "120px",
-              border: "2px solid #c4a13b",
-              marginBottom: "20px",
-            }}
-          />
+  style={{
+    width: "80%",
+    border: "none",
+    borderTop: "3px solid #c4a13b",
+    margin: "20px auto",
+  }}
+/>
 
           <table
             width="100%"
