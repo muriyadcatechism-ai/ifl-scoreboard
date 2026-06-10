@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState(null);
+const [searchTask, setSearchTask] = useState("");
+const [searchDate, setSearchDate] = useState("");
 
   useEffect(() => {
     fetch(
@@ -15,7 +17,28 @@ export default function Home() {
       .catch((err) => console.error(err));
   }, []);
 
-  if (!data) {
+const filteredHistory = data
+  ? data.history.filter((item) => {
+      const formattedDate = isNaN(Date.parse(item[0]))
+        ? item[0]
+        : new Date(item[0]).toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          });
+
+      return (
+        item[2]
+          .toLowerCase()
+          .includes(searchTask.toLowerCase()) &&
+        formattedDate
+          .toLowerCase()
+          .includes(searchDate.toLowerCase())
+      );
+    })
+  : [];
+
+if (!data) {
   return (
     <div
       style={{
@@ -308,6 +331,43 @@ export default function Home() {
     margin: "20px auto",
   }}
 />
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    gap: "15px",
+    flexWrap: "wrap",
+    marginBottom: "20px",
+  }}
+>
+  <input
+    type="text"
+    placeholder="🔍 Search Task"
+    value={searchTask}
+    onChange={(e) => setSearchTask(e.target.value)}
+    style={{
+      padding: "10px",
+      borderRadius: "10px",
+      border: "1px solid #ccc",
+      width: "250px",
+      fontSize: "16px",
+    }}
+  />
+
+  <input
+    type="text"
+    placeholder="📅 Search Date"
+    value={searchDate}
+    onChange={(e) => setSearchDate(e.target.value)}
+    style={{
+      padding: "10px",
+      borderRadius: "10px",
+      border: "1px solid #ccc",
+      width: "250px",
+      fontSize: "16px",
+    }}
+  />
+</div>
 
           <table
             width="100%"
@@ -332,7 +392,7 @@ export default function Home() {
             </thead>
 
             <tbody>
-              {data.history.map((item, index) => (
+              {filteredHistory.map((item, index) => (
                 <tr
                   key={index}
                   style={{
